@@ -1,0 +1,83 @@
+SQL> create table fruits(name char(10),season char(10),price number(6));
+
+Table created.
+
+SQL> insert into fruits values('mango','summer',450);
+
+1 row created.
+
+SQL> insert into fruits values('berries','winter',350);
+
+1 row created.
+
+SQL> insert into fruits values('guava','winter',200);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> savepoint A;
+
+Savepoint created.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            350                                                
+guava      winter            200                                                
+
+SQL> insert into fruits values('cherry','rainy',250);
+
+1 row created.
+
+SQL> savepoint B;
+
+Savepoint created.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            350                                                
+guava      winter            200                                                
+cherry     rainy             250                                                
+
+SQL> update fruits set price=300 where name='cherry';
+
+1 row updated.
+
+SQL> savepoint C;
+
+Savepoint created.
+
+SQL> rollback to B;
+
+Rollback complete.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            350                                                
+guava      winter            200                                                
+cherry     rainy             250                                                
+
+SQL> rollback to A;
+
+Rollback complete.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            350                                                
+guava      winter            200                                                
+
+SQL> spool off;

@@ -1,0 +1,206 @@
+SQL> set serveroutput on;
+SQL> edit cursors.sql;
+
+SQL> edit cursors.sql;
+
+SQL> create table employee(id number(4),name char(10),address varchar(20));
+create table employee(id number(4),name char(10),address varchar(20))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop table employee;
+
+Table dropped.
+
+SQL> create table employee(id number(4),name char(10),address varchar(20));
+
+Table created.
+
+SQL> insert into employee values(1210,'keerthi',guntur);
+insert into employee values(1210,'keerthi',guntur)
+                                           *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into employee values(1210,'keerthi','guntur');
+
+1 row created.
+
+SQL> insert into employee values(1205,'geethika','vuyuru');
+
+1 row created.
+
+SQL> insert into employee values(1208,'preethi','guntur');
+
+1 row created.
+
+SQL> insert into employee values(1227,'sathwika','vijayawada');
+
+1 row created.
+
+SQL> insert into employee values(1224,'meenakshi','guntur');
+
+1 row created.
+
+SQL> select * from employee;
+
+        ID NAME       ADDRESS                                                   
+---------- ---------- --------------------                                      
+      1210 keerthi    guntur                                                    
+      1205 geethika   vuyuru                                                    
+      1208 preethi    guntur                                                    
+      1227 sathwika   vijayawada                                                
+      1224 meenakshi  guntur                                                    
+
+SQL> @cursors.sql;
+Cursor Opened                                                                   
+1210 keerthi    guntur                                                          
+1205 geethika   vuyuru                                                          
+1208 preethi    guntur                                                          
+1227 sathwika   vijayawada                                                      
+1224 meenakshi  guntur                                                          
+1224 meenakshi  guntur                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> edit composite_types.sql;
+
+SQL> @composite_types.sql;
+employee id:1210                                                                
+employee name:keerthi                                                           
+employee addr:guntur                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> edit control_stmnts.sql;
+
+SQL> @control_stmnts.sql;
+Enter value for a: 10
+old   2: a number := &a;
+new   2: a number := 10;
+Enter value for b: -5
+old   3: b number := &b;
+new   3: b number := -5;
+b is non zero                                                                   
+b is negative                                                                   
+
+PL/SQL procedure successfully completed.
+
+SQL> edit loop_stmnts.sql;
+
+SQL> edit loop_stmnts.sql;
+
+SQL> @loop_stmnts.sql;
+SP2-0042: unknown command "declnre" - rest of line ignored.
+SP2-0734: unknown command beginning "n number :..." - rest of line ignored.
+dbms_output.put_line('Printing even numbers less than ' || n || ' using simple loop');
+                                                           *
+ERROR at line 2:
+ORA-06550: line 2, column 60: 
+PLS-00201: identifier 'N' must be declared 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 4, column 22: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 4, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 5, column 1: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 5, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 6, column 11: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 6, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 8, column 1: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 8, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 9, column 60: 
+PLS-00201: identifier 'N' must be declared 
+ORA-06550: line 9, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 10, column 7: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 10, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 14, column 1: 
+PLS-00201: identifier 'I' must be declared 
+ORA-06550: line 14, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 15, column 42: 
+PLS-00201: identifier 'N' must be declared 
+ORA-06550: line 15, column 1: 
+PL/SQL: Statement ignored 
+ORA-06550: line 16, column 13: 
+PLS-00201: identifier 'N' must be declared 
+ORA-06550: line 16, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> edit loop_stmnts.sql;
+
+SQL> @loop_stmnts.sql;
+Enter value for n: 10
+old   2: n number := &n;
+new   2: n number := 10;
+Printing even numbers less than 10 using simple loop                            
+2                                                                               
+4                                                                               
+6                                                                               
+8                                                                               
+10                                                                              
+Printing even numbers less than 10 using while loop                             
+0                                                                               
+2                                                                               
+4                                                                               
+6                                                                               
+8                                                                               
+Printing 1 to 10 numbers using numeric For loop                                 
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> edit search.sql;
+
+SQL> @search.sql;
+Enter value for a: 5
+old   2: a number := &a;
+new   2: a number := 5;
+Enter value for b: 10
+old   3: b number := &b;
+new   3: b number := 10;
+Printing based on simple case                                                   
+Not 1,2,3                                                                       
+Printing based on Search Case                                                   
+Invalid option                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> @search.sql;
+Enter value for a: 2
+old   2: a number := &a;
+new   2: a number := 2;
+Enter value for b: 5
+old   3: b number := &b;
+new   3: b number := 5;
+Printing based on simple case                                                   
+value is 2                                                                      
+Printing based on Search Case                                                   
+Invalid option                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

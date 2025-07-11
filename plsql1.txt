@@ -1,0 +1,20 @@
+SQL> set serveroutput on;
+SQL> edit plsql1.sql;
+
+SQL> @plsql1.sql;
+a: 100                                                                          
+b: .07                                                                          
+Total : 106.93                                                                  
+
+PL/SQL procedure successfully completed.
+
+SQL> edit plsql1.sql;
+
+SQL> @plsql1.sql;
+a: 100                                                                          
+b: 75                                                                           
+Total : 7525                                                                    
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

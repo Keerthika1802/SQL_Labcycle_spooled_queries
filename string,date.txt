@@ -1,0 +1,268 @@
+ 
+SQL> select concat('Lakshmi','keerthika') fullname from dual;
+
+FULLNAME                                                                        
+----------------                                                                
+Lakshmikeerthika                                                                
+
+SQL> select replace('sanvi and  sony','s','h') changes from dual;
+
+CHANGES                                                                         
+---------------                                                                 
+hanvi and  hony                                                                 
+                                                                
+
+SQL> select replace('sanvi and  sony',' ','@') changes from dual;
+
+CHANGES                                                                         
+---------------                                                                 
+sanvi@and@@sony                                                                 
+
+SQL> select lower('KEERTHIKA') lowercase from dual;
+
+LOWERCASE                                                                       
+---------                                                                       
+keerthika                                                                       
+
+SQL> select upper('keerthika') uppercase from dual;
+
+UPPERCASE                                                                       
+---------                                                                       
+KEERTHIKA                                                                       
+
+SQL> select trim('     Lakshmi   Keerthika     ')remspace from dual;
+
+REMSPACE                                                                        
+-------------------                                                             
+Lakshmi   Keerthika                                                             
+
+SQL> select trim(leading 's' from 'sanvi sony') leadtrim from dual;
+
+LEADTRIM                                                                        
+---------                                                                       
+anvi sony                                                                       
+
+SQL> select trim(trailing 'y' from 'sanvi sony') tailtrim from dual;
+
+TAILTRIM                                                                        
+---------                                                                       
+sanvi son                                                                       
+
+                                                                      
+
+SQL> select trim('m' from 'malayalam') from dual;
+
+TRIM('M                                                                         
+-------                                                                         
+alayala                                                                         
+
+SQL> select ltrim('               keerthi---')lefttrim from dual;
+
+LEFTTRIM                                                                        
+----------                                                                      
+keerthi---                                                                      
+
+SQL> select ltrim('-----keerthi---','-')lefttrim from dual;
+
+LEFTTRIM                                                                        
+----------                                                                      
+keerthi---                                                                      
+
+SQL> select ltrim('keerthi---','-')lefttrim from dual;
+
+LEFTTRIM                                                                        
+----------                                                                      
+keerthi---                                                                      
+
+                                                           
+SQL> select rtrim('      keerthi     ')righttrim from dual;
+
+RIGHTTRIM                                                                       
+-------------                                                                   
+      keerthi                                                                   
+
+SQL> select rtrim('----keerthi---','-')righttrim from dual;
+
+RIGHTTRIM                                                                       
+-----------                                                                     
+----keerthi                                                                     
+
+SQL> select rtrim('----keerthi','-')righttrim from dual;
+
+RIGHTTRIM                                                                       
+-----------                                                                     
+----keerthi                                                                     
+
+
+
+SQL> create table clothes(name char(7),price number(5));
+
+Table created.
+
+SQL> insert into clothes values('jeans',5000);
+
+1 row created.
+
+SQL> insert into clothes values('lehanga',9000);
+
+1 row created.
+
+SQL> insert into clothes values('salwar',7000);
+
+1 row created.
+
+SQL> select * from clothes;
+
+NAME         PRICE                                                              
+------- ----------                                                              
+jeans         5000                                                              
+lehanga       9000                                                              
+salwar        7000                                                              
+                                                                          
+
+SQL> select lpad(price,10,'*') from clothes;
+
+LPAD(PRICE,10,'*')                                                              
+----------------------------------------                                        
+******5000                                                                      
+******9000                                                                      
+******7000                                                                      
+
+SQL> select rpad(price,10,'*') from clothes;
+
+RPAD(PRICE,10,'*')                                                              
+----------------------------------------                                        
+5000******                                                                      
+9000******                                                                      
+7000******                                                                      
+
+SQL> select initcap('good morning') wish from dual;
+
+WISH                                                                            
+------------                                                                    
+Good Morning                                                                    
+
+SQL> select substr('good morning',2,7) string from dual;
+
+STRING                                                                          
+-------                                                                         
+ood mor                                                                         
+
+SQL> select substr('good morning',-2,7) string from dual;
+
+ST                                                                              
+--                                                                              
+ng                                                                              
+
+
+
+SQL> select translate('good@morning@world','@',' ') as newstring from dual;
+
+NEWSTRING                                                                       
+------------------                                                              
+good morning world                                                              
+
+SQL> select translate('aaabbbcccdddeee','abcde','edcba') as newstring from dual;
+
+NEWSTRING                                                                       
+---------------                                                                 
+eeedddcccbbbaaa                                                                 
+
+SQL> select translate('preethika','pr','g') as newstring from dual;
+
+NEWSTRIN                                                                        
+--------                                                                        
+geethika                                                                        
+
+SQL> select length('good morning') string from dual;
+
+    STRING                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> select name,price,length(name) from clothes;
+
+NAME         PRICE LENGTH(NAME)                                                 
+------- ---------- ------------                                                 
+jeans         5000            7                                                 
+lehanga       9000            7                                                 
+salwar        7000            7                                                 
+
+
+
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+11-MAY-24                                                                       
+
+                                                                  
+
+SQL> select sysdate-2 as twodays from dual;
+
+TWODAYS                                                                         
+---------                                                                       
+09-MAY-24                                                                       
+
+SQL> select sysdate+2 as twodays from dual;
+
+TWODAYS                                                                         
+---------                                                                       
+13-MAY-24                                                                       
+
+SQL> select to_char(sysdate,'MM_DD_YYYY HH:MM:SS')as now from dual;
+
+NOW                                                                             
+-------------------                                                             
+05_11_2024 06:06:33                                                             
+
+SQL> select add_months(sysdate,2) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+11-JUL-24                                                                       
+
+SQL> select add_months(sysdate,-2) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+11-MAR-24                                                                       
+
+
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+31-may-24                                                                       
+
+SQL> select sysdate,last_day(sysdate)as last,last_day(sysdate)-sysdate as days_left from dual;
+
+SYSDATE   LAST       DAYS_LEFT                                                  
+--------- --------- ----------                                                  
+11-may-24 31-may-24         20                                                  
+
+SQL> select next_day(sysdate,'monday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+13-MAY-24                                                                       
+
+SQL> select months_between('18-FEB-2024','18-AUG-2024') from dual;
+
+MONTHS_BETWEEN('18-FEB-2024','18-AUG-2024')                                     
+-------------------------------------------                                     
+                                         -6                                     
+
+SQL> select current_date,sessiontimezone from dual;
+
+CURRENT_D                                                                       
+---------                                                                       
+SESSIONTIMEZONE                                                                 
+---------------------------------------------------------------------------     
+11-MAY-24                                                                       
++05:30                                                                          
+                                                                                
+
+

@@ -1,0 +1,107 @@
+SQL> create table Emp_details(Emp_id number(5),Emp_Name char(20),Emp_Address varchar2(50));
+
+Table created.
+
+SQL> desc Emp_details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(5)
+ EMP_NAME                                           CHAR(20)
+ EMP_ADDRESS                                        VARCHAR2(50)
+
+SQL> alter table Emp_details add Emp_Salary number(5);
+
+Table altered.
+
+SQL> desc Emp_details;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(5)
+ EMP_NAME                                           CHAR(20)
+ EMP_ADDRESS                                        VARCHAR2(50)
+ EMP_SALARY                                         NUMBER(5)
+
+SQL> alter table Emp_details drop column Emp_Salary;
+
+Table altered.
+
+SQL> desc Emp_details;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(5)
+ EMP_NAME                                           CHAR(20)
+ EMP_ADDRESS                                        VARCHAR2(50)
+
+
+SQL> alter table Emp_details modify Emp_Id number(10);
+
+Table altered.
+
+SQL> desc Emp_details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(10)
+ EMP_NAME                                           CHAR(20)
+ EMP_ADDRESS                                        VARCHAR2(50)
+
+SQL> create table Student(stu_id number(10),stu_name char(20),stu_branch char(20));
+
+Table created.
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                             NUMBER(10)
+ STU_NAME                                           CHAR(20)
+ STU_BRANCH                                         CHAR(20)
+
+SQL> drop table Student;
+
+Table dropped.
+
+SQL> desc Student
+ERROR:
+ORA-04043: object Student does not exist 
+
+
+SQL> create table Student(stu_id number(10),stu_name char(20),stu_branch char(20));
+
+Table created.
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                             NUMBER(10)
+ STU_NAME                                           CHAR(20)
+ STU_BRANCH                                         CHAR(20)
+
+SQL> truncate table Student;
+
+Table truncated.
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                             NUMBER(10)
+ STU_NAME                                           CHAR(20)
+ STU_BRANCH                                         CHAR(20)
+
+SQL> rename Student to Student_details;
+
+Table renamed.
+
+SQL> desc Student;
+ERROR:
+ORA-04043: object Student does not exist 
+
+
+SQL> desc Student_details
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                             NUMBER(10)
+ STU_NAME                                           CHAR(20)
+ STU_BRANCH                                         CHAR(20)
+
+
+
+SQL> spool off

@@ -1,0 +1,34 @@
+SQL> select * from student_data;
+
+    STU_ID STU_NAME   STU_BRANCH                                                
+---------- ---------- ----------                                                
+      1205 geethika   INF                                                       
+      5487 harsha     AIDS                                                      
+       510 Nandhini   CSE                                                       
+      1210 keerthika  INF                                                       
+      1224 meenakshi  INF                                                       
+
+SQL> desc student_data;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_ID                                    NOT NULL NUMBER
+ STU_NAME                                           CHAR(10)
+ STU_BRANCH                                         CHAR(10)
+
+SQL> create table S_data(Stu_id number(6),s_name char(10),foreign key(stu_id) references student_data(stu_id));
+
+Table created.
+
+SQL> insert into s_data values(1210,'keerthika');
+
+1 row created.
+
+SQL> insert into s_data values(1227,'sathwika');
+insert into s_data values(1227,'sathwika')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SYSTEM.SYS_C008323) violated - parent key not 
+found 
+
+
+SQL> spool off

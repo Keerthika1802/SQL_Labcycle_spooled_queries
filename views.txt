@@ -1,0 +1,132 @@
+SQL> create table stu_db(name char(10),id number(6),perc number(6),gender char(10),branch char(6));
+
+Table created.
+
+SQL> desc stu_db;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               CHAR(10)
+ ID                                                 NUMBER(6)
+ PERC                                               NUMBER(6)
+ GENDER                                             CHAR(10)
+ BRANCH                                             CHAR(6)
+
+SQL> insert into stu_db values('kushi',101,78,'female','CSE');
+
+1 row created.
+
+SQL> insert into stu_db values('prudhvi',102,89,'male','INF');
+
+1 row created.
+
+SQL> insert into stu_db values('Sohan',103,90,'male','INF');
+
+1 row created.
+
+SQL> insert into stu_db values('Kruthika',104,95,'female','ECE');
+
+1 row created.
+
+SQL> select * from stu_db;
+
+NAME               ID       PERC GENDER     BRANCH                              
+---------- ---------- ---------- ---------- ------                              
+kushi             101         78 female     CSE                                 
+Prudhvi           102         89 male       INF                                 
+Sohan             103         90 male       INF                                 
+Kruthika          104         95 female     ECE                                 
+
+SQL> create view INF_stu as select * from stu_db where branch='INF';
+
+View created.
+
+SQL> select * from INF_stu;
+
+NAME               ID       PERC GENDER     BRANCH                              
+---------- ---------- ---------- ---------- ------                              
+Prudhvi           102         89 male       INF                                 
+Sohan             103         90 male       INF                                 
+
+SQL> create view CSE_stu as select * from stu_db where branch='CSE';
+
+View created.
+
+SQL> select * from CSE_stu;
+
+NAME               ID       PERC GENDER     BRANCH                              
+---------- ---------- ---------- ---------- ------                              
+kushi             101         78 female     CSE                                 
+
+SQL> update CSE_stu set perc=92 where id=101;
+
+1 row updated.
+
+SQL> select * from CSE_stu;
+
+NAME               ID       PERC GENDER     BRANCH                              
+---------- ---------- ---------- ---------- ------                              
+kushi             101         92 female     CSE                                 
+
+SQL> select * from stu_db;
+
+NAME               ID       PERC GENDER     BRANCH                              
+---------- ---------- ---------- ---------- ------                              
+kushi             101         92 female     CSE                                 
+Prudhvi           102         89 male       INF                                 
+Sohan             103         90 male       INF                                 
+Kruthika          104         95 female     ECE                                 
+
+SQL> commit;
+
+Commit complete.
+
+SQL> create table contact_info(ID number(6),email varchar2(20),contact number(10));
+
+Table created.
+
+SQL> insert into contact_info values(101,'kushi@gmail.com',9876543210);
+
+1 row created.
+
+SQL> insert into contact_info values(102,'prudhvi@gmail.com',9012345678);
+
+1 row created.
+
+SQL> insert into contact_info values(103,'sohan@gmail.com',9342561780);
+
+1 row created.
+
+SQL> insert into contact_info values(104,'kruthika@gmail.com',9765438021);
+
+1 row created.
+
+SQL> select * from contact_info;
+
+        ID EMAIL                   CONTACT                                      
+---------- -------------------- ----------                                      
+       101 kushi@gmail.com      9876543210                                      
+       102 prudhvi@gmail.com    9012345678                                      
+       103 sohan@gmail.com      9342561780                                      
+       104 kruthika@gmail.com   9765438021                                      
+
+SQL> create view stu_contact as
+  2  select s.name,s.id,c.email,c.contact
+  3  from stu_db s,contact_info c where s.id=c.id;
+
+View created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from stu_contact;
+
+NAME               ID EMAIL                   CONTACT                           
+---------- ---------- -------------------- ----------                           
+kushi             101 kushi@gmail.com      9876543210                           
+prudhvi           102 prudhvi@gmail.com    9012345678                           
+Sohan             103 sohan@gmail.com      9342561780                           
+Kruthika          104 kruthika@gmail.com   9765438021                           
+
+
+

@@ -1,0 +1,199 @@
+SQL> create table fruits(fname char(10),price number(10));
+
+Table created.
+
+SQL> insert into fruits values('mango',350);
+
+1 row created.
+
+SQL> insert into fruits values('apple',400);
+
+1 row created.
+
+SQL> insert into fruits values('grape',200);
+
+1 row created.
+
+SQL> select * from fruits;
+
+FNAME           PRICE                                                           
+---------- ----------                                                           
+mango             350                                                           
+apple             400                                                           
+grape             200                                                           
+
+SQL> create table vegetables(vname char(10),price number(10));
+
+Table created.
+
+SQL> insert into vegetables values('potato',60);
+
+1 row created.
+
+SQL> insert into vegetables values('tomato',80);
+
+1 row created.
+
+SQL> select * from vegetables;
+
+VNAME           PRICE                                                           
+---------- ----------                                                           
+potato             60                                                           
+tomato             80                                                           
+
+SQL> select * from vegetables v,fruits f where v.price>f.price;
+
+no rows selected
+
+SQL> select * from vegetables v,fruits f where v.price<f.price;
+
+VNAME           PRICE FNAME           PRICE                                     
+---------- ---------- ---------- ----------                                     
+potato             60 mango             350                                     
+potato             60 apple             400                                     
+potato             60 grape             200                                     
+tomato             80 mango             350                                     
+tomato             80 apple             400                                     
+tomato             80 grape             200                                     
+
+6 rows selected.
+
+SQL> create table cars(name char(5),model number(5));
+
+Table created.
+
+SQL> insert into cars values('car1',2004);
+
+1 row created.
+
+SQL> insert into cars values('car2',2008);
+
+1 row created.
+
+SQL> insert into cars values('car3',2012);
+
+1 row created.
+
+SQL> insert into cars values('car4',2016);
+
+1 row created.
+
+SQL> select * from cars;
+
+NAME       MODEL                                                                
+----- ----------                                                                
+car1        2004                                                                
+car2        2008                                                                
+car3        2012                                                                
+car4        2016                                                                
+
+SQL> create table c_price(model number(5),price number(10));
+
+Table created.
+
+SQL> insert into c_price values(2004,500000);
+
+1 row created.
+
+SQL> insert into c_price values(2008,1000000);
+
+1 row created.
+
+SQL> insert into c_price values(2012,2000000);
+
+1 row created.
+
+SQL> insert into c_price values(2020,3000000);
+
+1 row created.
+
+SQL> select * from c_price;
+
+     MODEL      PRICE                                                           
+---------- ----------                                                           
+      2004     500000                                                           
+      2008    1000000                                                           
+      2012    2000000                                                           
+      2020    3000000                                                           
+
+SQL> select * from cars natural join c_price;
+
+     MODEL NAME       PRICE                                                     
+---------- ----- ----------                                                     
+      2004 car1      500000                                                     
+      2008 car2     1000000                                                     
+      2012 car3     2000000                                                     
+
+SQL> select * from cars inner join c_price on cars.model=c_price.model;
+
+NAME       MODEL      MODEL      PRICE                                          
+----- ---------- ---------- ----------                                          
+car1        2004       2004     500000                                          
+car2        2008       2008    1000000                                          
+car3        2012       2012    2000000                                          
+
+SQL> select * from cars left join c_price on cars.model=c_price.model;
+
+NAME       MODEL      MODEL      PRICE                                          
+----- ---------- ---------- ----------                                          
+car1        2004       2004     500000                                          
+car2        2008       2008    1000000                                          
+car3        2012       2012    2000000                                          
+car4        2016                                                                
+
+SQL> select c.name,c.model,p.price from cars c right join c_price p on c.model=p.model;
+
+NAME       MODEL      PRICE                                                     
+----- ---------- ----------                                                     
+car1        2004     500000                                                     
+car2        2008    1000000                                                     
+car3        2012    2000000                                                     
+                    3000000                                                                                                          
+
+SQL> select c.name,p.model,p.price from cars c full join c_price p on c.model=p.model;
+
+NAME       MODEL      PRICE                                                     
+----- ---------- ----------                                                     
+car1        2004     500000                                                     
+car2        2008    1000000                                                     
+car3        2012    2000000                                                     
+            2020    3000000                                                     
+car4                                                                            
+
+SQL> select * from cars c full join c_price p on c.model=p.model;
+
+NAME       MODEL      MODEL      PRICE                                          
+----- ---------- ---------- ----------                                          
+car1        2004       2004     500000                                          
+car2        2008       2008    1000000                                          
+car3        2012       2012    2000000                                          
+                       2020    3000000                                          
+car4        2016                                                                
+
+SQL> select * from cars cross join c_price;
+
+NAME       MODEL      MODEL      PRICE                                          
+----- ---------- ---------- ----------                                          
+car1        2004       2004     500000                                          
+car1        2004       2008    1000000                                          
+car1        2004       2012    2000000                                          
+car1        2004       2020    3000000                                          
+car2        2008       2004     500000                                          
+car2        2008       2008    1000000                                          
+car2        2008       2012    2000000                                          
+car2        2008       2020    3000000                                          
+car3        2012       2004     500000                                          
+car3        2012       2008    1000000                                          
+car3        2012       2012    2000000                                          
+
+NAME       MODEL      MODEL      PRICE                                          
+----- ---------- ---------- ----------                                          
+car3        2012       2020    3000000                                          
+car4        2016       2004     500000                                          
+car4        2016       2008    1000000                                          
+car4        2016       2012    2000000                                          
+car4        2016       2020    3000000                                          
+
+16 rows selected.
+
+

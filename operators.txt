@@ -1,0 +1,207 @@
+SQL> create table fruits(name char(10),season char(10),price number(5));
+
+Table created.
+
+SQL> insert into fruits values('mango','summer',450);
+
+1 row created.
+
+SQL> insert into fruits values('berries','winter',300);
+
+1 row created.
+
+SQL> insert into fruits values('guava','winter',200);
+
+1 row created.
+
+SQL> insert into fruits values('cherry','rainy',250);
+
+1 row created.
+
+SQL> insert into fruits values('grapes','autumn',300);
+
+1 row created.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            300                                                
+guava      winter            200                                                
+cherry     rainy             250                                                
+grapes     autumn            300                                                
+
+SQL> select name,price,price+50 from fruits;
+
+NAME            PRICE   PRICE+50                                                
+---------- ---------- ----------                                                
+mango             450        500                                                
+berries           300        350                                                
+guava             200        250                                                
+cherry            250        300                                                
+grapes            300        350                                                
+
+SQL> select name,price,price-50 from fruits;
+
+NAME            PRICE   PRICE-50                                                
+---------- ---------- ----------                                                
+mango             450        400                                                
+berries           300        250                                                
+guava             200        150                                                
+cherry            250        200                                                
+grapes            300        250                                                
+
+SQL> select name,price,price*2 from fruits;
+
+NAME            PRICE    PRICE*2                                                
+---------- ---------- ----------                                                
+mango             450        900                                                
+berries           300        600                                                
+guava             200        400                                                
+cherry            250        500                                                
+grapes            300        600                                                
+
+SQL> select name,price,price/2 from fruits;
+
+NAME            PRICE    PRICE/2                                                
+---------- ---------- ----------                                                
+mango             450        225                                                
+berries           300        150                                                
+guava             200        100                                                
+cherry            250        125                                                
+grapes            300        150                                                
+
+SQL> select name,price,price+price*0.2 TwentyPercentInc from fruits;
+
+NAME            PRICE TWENTYPERCENTINC                                          
+---------- ---------- ----------------                                          
+mango             450              540                                          
+berries           300              360                                          
+guava             200              240                                          
+cherry            250              300                                          
+grapes            300              360                                          
+
+SQL> select * from fruits where season='winter';
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+berries    winter            300                                                
+guava      winter            200                                                
+
+SQL> select name,price from fruits where price>250;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+mango             450                                                           
+berries           300                                                           
+grapes            300                                                           
+
+SQL> select name,price from fruits where price>=300;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+mango             450                                                           
+berries           300                                                           
+grapes            300                                                           
+
+SQL> select name,price from fruits where price<250;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+guava             200                                                           
+
+SQL> select name,price from fruits where price<=250;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+guava             200                                                           
+cherry            250                                                           
+
+SQL> select * from fruits where season<>'winter';
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+cherry     rainy             250                                                
+grapes     autumn            300                                                
+
+SQL> select name,price from fruits where price between 300 and 500;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+mango             450                                                           
+berries           300                                                           
+grapes            300                                                           
+
+SQL> select name,price from fruits where price not between 300 and 500;
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+guava             200                                                           
+cherry            250                                                           
+
+SQL> select name,price from fruits where price in(200,300);
+
+NAME            PRICE                                                           
+---------- ----------                                                           
+berries           300                                                           
+guava             200                                                           
+grapes            300                                                           
+
+SQL> select * from fruits where price in(500);
+
+no rows selected
+
+SQL> select name from fruits where name like 'm%';
+
+NAME                                                                            
+----------                                                                      
+mango                                                                           
+
+SQL> select name from fruits where name like '_a%';
+
+NAME                                                                            
+----------                                                                      
+mango                                                                           
+
+SQL> select name from fruits where name like '%ua%';
+
+NAME                                                                            
+----------                                                                      
+guava                                                                           
+
+SQL> insert into fruits values('apple',null,300);
+
+1 row created.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            450                                                
+berries    winter            300                                                
+guava      winter            200                                                
+cherry     rainy             250                                                
+grapes     autumn            300                                                
+apple                        300                                                
+
+6 rows selected.
+
+SQL> select * from fruits where season is null;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+apple                        300                                                
+
+SQL> select name ||q'[is a ]'||season||q'[season fruit]' as seasonal_fruits from fruits;
+
+SEASONAL_FRUITS                                                                 
+-------------------------------------                                           
+mango     is a summer    season fruit                                           
+berries   is a winter    season fruit                                           
+guava     is a winter    season fruit                                           
+cherry    is a rainy     season fruit                                           
+grapes    is a autumn    season fruit                                           
+
+SQL> spool off;

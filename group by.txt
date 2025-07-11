@@ -1,0 +1,75 @@
+
+
+SQL> create table academy(stu_id number(6),stu_name char(10),course char(6),address varchar2(20));
+
+Table created.
+
+SQL> insert into academy values(1205,'geethika','java','vijayawada');
+
+1 row created.
+
+SQL> insert into academy values(1208,'preethi','dbms','guntur');
+
+1 row created.
+
+SQL> insert into academy values(1210,'keerthi','python','guntur');
+
+1 row created.
+
+SQL> insert into academy values(1224,'meenakshi','java','hyderabad');
+
+1 row created.
+
+SQL> insert into academy values(1227,'sathwika','dbms','guntur');
+
+1 row created.
+
+SQL> select * from academy;
+
+    STU_ID STU_NAME   COURSE ADDRESS                                            
+---------- ---------- ------ --------------------                               
+      1205 geethika   java   vijayawada                                         
+      1208 preethi    dbms   guntur                                             
+      1210 keerthi    python guntur                                             
+      1224 meenakshi  java   hyderabad                                          
+      1227 sathwika   dbms   guntur                                             
+
+SQL> select course,count(stu_id) from academy group by course;
+
+COURSE COUNT(STU_ID)                                                            
+------ -------------                                                            
+java               2                                                            
+dbms               2                                                            
+python             1                                                            
+
+SQL> select course,count(stu_id) from academy group by course order by count(stu_id) desc;
+
+COURSE COUNT(STU_ID)                                                            
+------ -------------                                                            
+java               2                                                            
+dbms               2                                                            
+python             1                                                            
+
+SQL> select course,count(stu_id) from academy group by course order by count(stu_id) asc;
+
+COURSE COUNT(STU_ID)                                                            
+------ -------------                                                            
+python             1                                                            
+java               2                                                            
+dbms               2                                                            
+
+ 
+SQL> select course,count(stu_id) from academy group by course having count(*)>1;
+
+COURSE COUNT(STU_ID)                                                            
+------ -------------                                                            
+java               2                                                            
+dbms               2                                                            
+
+SQL> select course,count(stu_id) from academy group by course having count(*)<2;
+
+COURSE COUNT(STU_ID)                                                            
+------ -------------                                                            
+python             1                                                            
+
+SQL> spool off;

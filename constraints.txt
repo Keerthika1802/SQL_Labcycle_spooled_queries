@@ -1,0 +1,114 @@
+SQL> create table stu_details(stu_name char(20),stu_id number(10),stu_addr varchar(50));
+
+Table created.
+
+SQL> desc stu_details;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_NAME                                           CHAR(20)
+ STU_ID                                             NUMBER(10)
+ STU_ADDR                                           VARCHAR2(50)
+
+SQL> alter table stu_details add constraint My_const unique(stu_id);
+
+Table altered.
+
+SQL> desc stu_details;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STU_NAME                                           CHAR(20)
+ STU_ID                                             NUMBER(10)
+ STU_ADDR                                           VARCHAR2(50)
+
+SQL> insert into stu_details values('nikil',1210,'guntur');
+
+1 row created.
+
+SQL> insert into stu_details values('sara',1122,'vijayawada');
+
+1 row created.
+
+SQL> select * from stu_details;
+
+STU_NAME                 STU_ID                                                 
+-------------------- ----------                                                 
+STU_ADDR                                                                        
+--------------------------------------------------                              
+nikil                      1210                                                 
+guntur                                                                          
+                                                                                
+sara                       1122                                                 
+vijayawada                                                                      
+                                                                                
+
+SQL> alter table stu_details modify stu_addr varchar(10);
+
+Table altered.
+
+SQL> select * from stu_details;
+
+STU_NAME                 STU_ID STU_ADDR                                        
+-------------------- ---------- ----------                                      
+nikil                      1210 guntur                                          
+sara                       1122 vijayawada                                      
+
+SQL> insert into stu_details values('sakhi',1122,'hyderabad');
+insert into stu_details values('sakhi',1122,'hyderabad')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.MY_CONST) violated 
+
+
+SQL> insert into stu_details values('sakhi',null,'hyderabad');
+
+1 row created.
+
+SQL> select * from stu_details;
+
+STU_NAME                 STU_ID STU_ADDR                                        
+-------------------- ---------- ----------                                      
+nikil                      1210 guntur                                          
+sara                       1122 vijayawada                                      
+sakhi                           hyderabad                                       
+
+SQL> alter table stu_details add constraint primary_const primarykey(stu_id);
+alter table stu_details add constraint primary_const primarykey(stu_id)
+                                                               *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> alter table stu_details add constraint primary_const primarykey(stu_name);
+alter table stu_details add constraint primary_const primarykey(stu_name)
+                                                               *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> alter table stu_details add constraint primary_const primary key(stu_name);
+
+Table altered.
+
+SQL> select * from stu_details;
+
+STU_NAME                 STU_ID STU_ADDR                                        
+-------------------- ---------- ----------                                      
+nikil                      1210 guntur                                          
+sara                       1122 vijayawada                                      
+sakhi                           hyderabad                                       
+
+SQL> insert into stu_details values('sakhi',1321,'vizag');
+insert into stu_details values('sakhi',1321,'vizag')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.PRIMARY_CONST) violated 
+
+
+SQL> insert into stu_details values(null,1321,'vizag');
+insert into stu_details values(null,1321,'vizag')
+                               *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SYSTEM"."STU_DETAILS"."STU_NAME") 
+
+
+SQL> spool off

@@ -1,0 +1,154 @@
+SQL> create table hotel_checkin(c_id number(5),c_name char(10),country char(10),no_of_days number(10));
+
+Table created.
+
+SQL> insert into hotel_checkin values(12010,'james','germany',15);
+
+1 row created.
+
+SQL> insert into hotel_checkin values(12011,'henry','spain',10);
+
+1 row created.
+
+SQL> select * from hotel_checkin;
+
+      C_ID C_NAME     COUNTRY    NO_OF_DAYS                                     
+---------- ---------- ---------- ----------                                     
+     12010 james      germany            15                                     
+     12011 henry      spain              10                                     
+
+SQL> insert into hotel_checkin(c_id,c_name,country,no_of_days)values(&c_id,&c_name,&country,&no_of_days);
+Enter value for c_id: 12012
+Enter value for c_name: 'elena'
+Enter value for country: 'france'
+Enter value for no_of_days: 18
+old   1: insert into hotel_checkin(c_id,c_name,country,no_of_days)values(&c_id,&c_name,&country,&no_of_days)
+new   1: insert into hotel_checkin(c_id,c_name,country,no_of_days)values(12012,'elena','france',18)
+
+1 row created.
+
+SQL> insert into hotel_checkin(c_id,c_name,country,no_of_days)values(&c_id,&c_name,&country,&no_of_days);
+Enter value for c_id: 12013
+Enter value for c_name: 'jenny'
+Enter value for country: 'japan'
+Enter value for no_of_days: 26
+old   1: insert into hotel_checkin(c_id,c_name,country,no_of_days)values(&c_id,&c_name,&country,&no_of_days)
+new   1: insert into hotel_checkin(c_id,c_name,country,no_of_days)values(12013,'jenny','japan',26)
+
+1 row created.
+
+SQL> select * from hotel_checkin;
+
+      C_ID C_NAME     COUNTRY    NO_OF_DAYS                                     
+---------- ---------- ---------- ----------                                     
+     12010 james      germany            15                                     
+     12011 henry      spain              10                                     
+     12012 elena      france             18                                     
+     12013 jenny      japan              26                                     
+
+SQL> select c_id,c_name from hotel_checkin;
+
+      C_ID C_NAME                                                               
+---------- ----------                                                           
+     12010 james                                                                
+     12011 henry                                                                
+     12012 elena                                                                
+     12013 jenny                                                                
+
+SQL> select c_id,c_name,no_of_days from hotel_checkin;
+
+      C_ID C_NAME     NO_OF_DAYS                                                
+---------- ---------- ----------                                                
+     12010 james              15                                                
+     12011 henry              10                                                
+     12012 elena              18                                                
+     12013 jenny              26                                                
+
+SQL> select c_name,no_of_days,no_of_days/2 from hotel_checkin;
+
+C_NAME     NO_OF_DAYS NO_OF_DAYS/2                                              
+---------- ---------- ------------                                              
+james              15          7.5                                              
+henry              10            5                                              
+elena              18            9                                              
+jenny              26           13                                              
+
+SQL> select c_name,no_of_days,no_of_days*2 stay_days from hotel_checkin;
+
+C_NAME     NO_OF_DAYS  STAY_DAYS                                                
+---------- ---------- ----------                                                
+james              15         30                                                
+henry              10         20                                                
+elena              18         36                                                
+jenny              26         52                                                
+
+SQL> select c_id as cos_id,c_name as cos_name from hotel_checkin;
+
+    COS_ID COS_NAME                                                             
+---------- ----------                                                           
+     12010 james                                                                
+     12011 henry                                                                
+     12012 elena                                                                
+     12013 jenny                                                                
+
+SQL> insert into hotel_checkin values(12014,'henry','italy',12);
+
+1 row created.
+
+SQL> select * from hotel_checkin;
+
+      C_ID C_NAME     COUNTRY    NO_OF_DAYS                                     
+---------- ---------- ---------- ----------                                     
+     12010 james      germany            15                                     
+     12011 henry      spain              10                                     
+     12012 elena      france             18                                     
+     12013 jenny      japan              26                                     
+     12014 henry      italy              12                                     
+
+SQL> select distinct c_name from hotel_checkin;
+
+C_NAME                                                                          
+----------                                                                      
+james                                                                           
+henry                                                                           
+elena                                                                           
+jenny                                                                           
+
+SQL> select distinct c_id from hotel_checkin;
+
+      C_ID                                                                      
+----------                                                                      
+     12010                                                                      
+     12011                                                                      
+     12012                                                                      
+     12013                                                                      
+     12014                                                                      
+
+SQL> update hotel_checkin SET c_name='kyathi' where c_id=12014;
+
+1 row updated.
+
+SQL> select * from hotel_checkin;
+
+      C_ID C_NAME     COUNTRY    NO_OF_DAYS                                     
+---------- ---------- ---------- ----------                                     
+     12010 james      germany            15                                     
+     12011 henry      spain              10                                     
+     12012 elena      france             18                                     
+     12013 jenny      japan              26                                     
+     12014 kyathi     italy              12                                     
+
+SQL> delete from hotel_checkin where c_id=12012;
+
+1 row deleted.
+
+SQL> select * from hotel_checkin;
+
+      C_ID C_NAME     COUNTRY    NO_OF_DAYS                                     
+---------- ---------- ---------- ----------                                     
+     12010 james      germany            15                                     
+     12011 henry      spain              10                                     
+     12013 jenny      japan              26                                     
+     12014 kyathi     italy              12                                     
+
+SQL> spool off;

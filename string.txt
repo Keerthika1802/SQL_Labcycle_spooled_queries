@@ -1,0 +1,20 @@
+SQL> select concat("lakshmi","keerthika")fullname from dual;
+select concat("lakshmi","keerthika")fullname from dual
+                        *
+ERROR at line 1:
+ORA-00904: "keerthika": invalid identifier 
+
+
+SQL> select concat('lakshmi','keerthika')fullname from dual;
+
+FULLNAME                                                                        
+----------------                                                                
+lakshmikeerthika                                                                
+
+SQL> select 'lakshmi'||'keerthika' fullname from dual;
+
+FULLNAME                                                                        
+----------------                                                                
+lakshmikeerthika                                                                
+
+SQL> spool off;

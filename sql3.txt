@@ -1,0 +1,99 @@
+SQL> set serveroutput on;
+SQL> edit plsql3.sql;
+
+SQL> 
+SQL> create table student(id number(4),name char(10));
+
+Table created.
+
+SQL> insert into student values(1210,'keerthi');
+
+1 row created.
+
+SQL> insert into student values(1205,'geethika');
+
+1 row created.
+
+SQL> insert into student values(1227,'sathwika');
+
+1 row created.
+
+SQL> select * from student;
+
+        ID NAME                                                                 
+---------- ----------                                                           
+      1210 keerthi                                                              
+      1205 geethika                                                             
+      1227 sathwika                                                             
+
+SQL> edit plsql3.sql;
+
+SQL> @plsql3.sql;
+Enter value for n: keerthi
+old   2: 	n number:=&n;
+new   2: 	n number:=keerthi;
+	n number:=keerthi;
+	          *
+ERROR at line 2:
+ORA-06550: line 2, column 12: 
+PLS-00201: identifier 'KEERTHI' must be declared 
+ORA-06550: line 0, column 0: 
+PL/SQL: Compilation unit analysis terminated 
+
+
+SQL> @plsql3.sql;
+Enter value for n: 'student'
+old   2: 	n number:=&n;
+new   2: 	n number:='student';
+	select name1 into name from student where id=n;
+	       *
+ERROR at line 5:
+ORA-06550: line 5, column 9: 
+PL/SQL: ORA-00904: "NAME1": invalid identifier 
+ORA-06550: line 5, column 2: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> edit plsql3.sql;
+
+SQL> @plsql3.sql;
+Enter value for n: 'keerthi'
+old   2: 	n number:=&n;
+new   2: 	n number:='keerthi';
+declare
+*
+ERROR at line 1:
+ORA-06502: PL/SQL: numeric or value error: character to number conversion error 
+ORA-06512: at line 2 
+
+
+SQL> @plsql3.sql;
+Enter value for n: 1210
+old   2: 	n number:=&n;
+new   2: 	n number:=1210;
+student name is: keerthi                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> @plsql3.sql;
+Enter value for n: 1208
+old   2: 	n number:=&n;
+new   2: 	n number:=1208;
+student is not found in the table                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> @plsql3.sql;
+Enter value for n: keerthi
+old   2: 	n number:=&n;
+new   2: 	n number:=keerthi;
+	n number:=keerthi;
+	          *
+ERROR at line 2:
+ORA-06550: line 2, column 12: 
+PLS-00201: identifier 'KEERTHI' must be declared 
+ORA-06550: line 0, column 0: 
+PL/SQL: Compilation unit analysis terminated 
+
+
+SQL> spool off;

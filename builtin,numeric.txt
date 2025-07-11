@@ -1,0 +1,168 @@
+SQL> create table fruits(name char(10),season char(10),price number(5));
+
+Table created.
+
+SQL> insert into fruits values('mango','summer',400);
+
+1 row created.
+
+SQL> insert into fruits values('orange','winter',200);
+
+1 row created.
+
+SQL> insert into fruits values('jujube','autumn',150);
+
+1 row created.
+
+SQL> insert into fruits values('berries','spring',350);
+
+1 row created.
+
+SQL> select * from fruits;
+
+NAME       SEASON          PRICE                                                
+---------- ---------- ----------                                                
+mango      summer            400                                                
+orange     winter            200                                                
+jujube     autumn            150                                                
+berries    spring            350                                                
+
+SQL> select count(*) from fruits;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> select count(*) from fruits where season='winter';
+
+  COUNT(*)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select max(price),min(price) from fruits;
+
+MAX(PRICE) MIN(PRICE)                                                           
+---------- ----------                                                           
+       400        150                                                           
+
+SQL> select avg(price) from fruits;
+
+AVG(PRICE)                                                                      
+----------                                                                      
+       275                                                                      
+
+SQL> select sum(price) from fruits;
+
+SUM(PRICE)                                                                      
+----------                                                                      
+      1100                                                                      
+
+SQL> select name,price,sqrt(price) from fruits;
+
+NAME            PRICE SQRT(PRICE)                                               
+---------- ---------- -----------                                               
+mango             400          20                                               
+orange            200  14.1421356                                               
+jujube            150  12.2474487                                               
+berries           350  18.7082869                                               
+
+SQL> select concat(name,price) from fruits;
+
+CONCAT(NAME,PRICE)                                                              
+--------------------------------------------------                              
+mango     400                                                                   
+orange    200                                                                   
+jujube    150                                                                   
+berries   350                                                                   
+
+SQL> select abs(-10) from dual;
+
+  ABS(-10)                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select abs(-5) absolute from dual;
+
+  ABSOLUTE                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select sin(25*0.017455) sine25 from dual;
+
+    SINE25                                                                      
+----------                                                                      
+.422656949                                                                      
+
+SQL> select asin(25*0.017455) asin25 from dual;
+
+    ASIN25                                                                      
+----------                                                                      
+.451565888                                                                      
+
+SQL> select cos(25*0.017455) cosine25 from dual;
+
+  COSINE25                                                                      
+----------                                                                      
+.906289746                                                                      
+
+SQL> select acos(25*0.017455) acos25 from dual;
+
+    ACOS25                                                                      
+----------                                                                      
+1.11923044                                                                      
+                                                                      
+SQL> select exp(5) epow5 from dual;
+
+     EPOW5                                                                      
+----------                                                                      
+148.413159                                                                      
+
+SQL> select ceil(8.9) from dual;
+
+ CEIL(8.9)                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select floor(8.9) from dual;
+
+FLOOR(8.9)                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> select log(8,9) from dual;
+
+  LOG(8,9)                                                                      
+----------                                                                      
+1.05664167                                                                      
+
+SQL> select power(2,5) from dual;
+
+POWER(2,5)                                                                      
+----------                                                                      
+        32                                                                      
+
+SQL> select round(25.6) from dual;
+
+ROUND(25.6)                                                                     
+-----------                                                                     
+         26                                                                     
+
+SQL> select round(-25.6) from dual;
+
+ROUND(-25.6)                                                                    
+------------                                                                    
+         -26                                                                    
+
+SQL> select trunc(25.6754,2) from dual;
+
+TRUNC(25.6754,2)                                                                
+----------------                                                                
+           25.67                                                                
+
+SQL> select trunc(25.6754,1) from dual;
+
+TRUNC(25.6754,1)                                                                
+----------------                                                                
+            25.6                                                                
+
+SQL> spool off;

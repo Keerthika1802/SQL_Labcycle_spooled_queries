@@ -1,0 +1,22 @@
+SQL> set serveroutput on;
+SQL> edit plsql_packages.sql;
+
+SQL> @plsql_packages.sql;
+
+Package created.
+
+SQL> edit plsql_pack_body.sql;
+
+SQL> @plsql_pack_body.sql;
+
+Package body created.
+
+SQL> edit packages.sql;
+
+SQL> @packages.sql;
+Sum Result: 12                                                                  
+Product Result: 12                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

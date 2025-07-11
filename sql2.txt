@@ -1,0 +1,27 @@
+SQL> set serveroutput on;
+SQL> edit plsql2.sql;
+
+SQL> @plsql2.sql;
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> edit plsql2_1.sql;
+
+SQL> @plsql2_1.sql;
+Enter value for a: 10
+old   2: 	a number:=&a;
+new   2: 	a number:=10;
+a = 10 is positive                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> @plsql2_1.sql;
+Enter value for a: -10
+old   2: 	a number:=&a;
+new   2: 	a number:=-10;
+a = -10 is negative                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;
